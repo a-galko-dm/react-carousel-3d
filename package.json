@@ -1,6 +1,6 @@
 {
-  "name": "3d-react-carousal",
-  "version": "5.0.0",
+  "name": "3d-react-carousel",
+  "version": "6.0.0",
   "description": "3D carousel in react",
   "main": "dist/index.js",
   "peerDependencies": {
@@ -15,9 +15,11 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "webpack --watch",
-    "prepublish": "if exist dist ( rmdir /s/q dist ) && npm run build",
+    "prepublish": "npm run build",
     "build": "webpack",
-    "lint": "eslint src/index.js"
+    "lint": "eslint src/index.js",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
   },
   "author": "Suhail C <mr.suhailsulu@gmail.com>",
   "repository": {
@@ -30,6 +32,14 @@
     "@babel/plugin-proposal-object-rest-spread": "^7.14.7",
     "@babel/plugin-transform-react-jsx": "^7.14.5",
     "@babel/preset-env": "^7.14.7",
+    "@storybook/addon-essentials": "^7.0.23",
+    "@storybook/addon-interactions": "^7.0.23",
+    "@storybook/addon-links": "^7.0.23",
+    "@storybook/addon-styling": "^1.3.0",
+    "@storybook/blocks": "^7.0.23",
+    "@storybook/react": "^7.0.23",
+    "@storybook/react-webpack5": "^7.0.23",
+    "@storybook/testing-library": "^0.0.14-next.2",
     "babel-loader": "^8.2.2",
     "css-loader": "^5.2.6",
     "eslint": "^7.30.0",
@@ -38,10 +48,12 @@
     "eslint-plugin-jsx-a11y": "^6.4.1",
     "eslint-plugin-react": "^7.24.0",
     "eslint-plugin-react-hooks": "^4.2.0",
-    "node-sass": "^6.0.1",
+    "eslint-plugin-storybook": "^0.6.12",
     "react": ">=17.0.2",
     "react-dom": ">=17.0.2",
-    "sass-loader": "^12.1.0",
+    "sass": "^1.63.6",
+    "sass-loader": "^13.3.2",
+    "storybook": "^7.0.23",
     "style-loader": "^3.0.0",
     "webpack": "^5.44.0",
     "webpack-cli": "^4.7.2"
@@ -53,7 +65,7 @@
   "keywords": [
     "react",
     "carousal",
-    "3d-carousal"
+    "3d-carousel"
   ],
   "license": "MIT"
 }

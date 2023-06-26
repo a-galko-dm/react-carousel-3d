@@ -56,7 +56,6 @@ $mode: cubic-bezier(0.17, 0.67, 0.55, 1.43);
           top: 0;
           width: 100%;
           //   height: 100%;
-          box-shadow: 0px 10px 40px rgba(0, 0, 0, 0.2);
           transition: $time $mode;
           transform: scale(0);
           opacity: 0;
@@ -117,47 +116,23 @@ $mode: cubic-bezier(0.17, 0.67, 0.55, 1.43);
       position: absolute;
       display: none;
       z-index: 3;
-      right: 101%;
+      right: 71%;
+      width: 30%;
       margin-right: 5px;
-      padding: 20px 15px;
       height: 100%;
       cursor: pointer;
-      div {
-        position: absolute;
-        top: 50%;
-        left: 0%;
-        margin-top: -20px;
-        color: #ffffff;
-        transform: translateY(-50%);
-        padding: 10px 10px;
-        border-top: 2px solid #fdc84b;
-        border-right: 2px solid #fdc84b;
-        border-bottom: 2px solid #fdc84b;
-        border-left: 2px solid #fdc84b;
-      }
+      content: "";
     }
+
     .slider-right {
       display: none;
       position: absolute;
       z-index: 3;
-      left: 101%;
-      padding: 20px 15px;
-      height: 101%;
+      left: 71%;
+      width: 30%;
+      height: 100%;
       cursor: pointer;
-      div {
-        position: absolute;
-        top: 50%;
-        left: 0%;
-        margin-top: -20px;
-        color: #ffffff;
-        transform: translateY(-50%);
-        padding: 10px 10px;
-        border-top: 2px solid #fdc84b;
-        border-right: 2px solid #fdc84b;
-        border-bottom: 2px solid #fdc84b;
-        border-left: 2px solid #fdc84b;
-      }
-      margin-left: -2px;
+      content: "";
     }
     .slider-left-noborders {
       position: absolute;

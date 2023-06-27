@@ -5,21 +5,30 @@ export default {
   component: Carousel,
 };
 
-const slides = [<div>hi 1</div>, <div>hi 2</div>, <div>hi 3</div>];
+const slides = [
+  <div>hi 1</div>,
+  <div>hi 2</div>,
+  <div>hi 3</div>,
+  <div>hi 4</div>,
+  <div>hi 5</div>,
+];
 
 const ButtonWithHooks = () => {
   const [currentSlide, setCurrentSlide] = useState(1);
 
-  const onSlideChange = useCallback((slide) => {
-    setCurrentSlide(slide);
-  }, []);
-
   return (
-    <Carousel
-      currentSlide={currentSlide}
-      slides={slides}
-      onSlideChange={onSlideChange}
-    />
+    <>
+      <Carousel
+        slides={slides}
+        currentSlide={currentSlide}
+        onSlideChange={setCurrentSlide}
+      />
+      {slides.map((slide, index) => (
+        <button key={index} onClick={() => setCurrentSlide(index)}>
+          {index}
+        </button>
+      ))}
+    </>
   );
 };
 

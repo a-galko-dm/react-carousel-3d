@@ -9,17 +9,17 @@ export const Carousel = React.memo(
     const nextRef = useRef();
 
     const slideRight = useCallback(() => {
-      let nextIndex = currentSlide - 1;
+      let nextIndex = currentSlide + 1;
 
-      if (nextIndex < 0) nextIndex = localSlides.length - 1;
+      if (nextIndex > localSlides.length - 1) nextIndex = 0;
 
       onSlideChange(nextIndex);
     }, [currentSlide, localSlides.length]);
 
     const slideLeft = useCallback(() => {
-      let nextIndex = currentSlide + 1;
+      let nextIndex = currentSlide - 1;
 
-      if (nextIndex > localSlides.length - 1) nextIndex = 0;
+      if (nextIndex < 0) nextIndex = localSlides.length - 1;
 
       onSlideChange(nextIndex);
     }, [currentSlide, localSlides.length]);
@@ -54,14 +54,14 @@ export const Carousel = React.memo(
           currentSlide - 1 === i ||
           (i === lastSlideIndex && currentSlide === 0)
         ) {
-          slideClass = "slider-single proactive";
+          slideClass = "slider-single preactive";
         }
 
         if (
           currentSlide + 1 === i ||
           (i === 0 && currentSlide === lastSlideIndex)
         ) {
-          slideClass = "slider-single preactive";
+          slideClass = "slider-single proactive";
         }
 
         if (currentSlide === i) {

@@ -1,6 +1,6 @@
 {
   "name": "3d-react-carousel",
-  "version": "7.0.2",
+  "version": "7.0.3",
   "description": "3D carousel in react",
   "main": "dist/index.js",
   "peerDependencies": {

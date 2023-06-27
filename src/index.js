@@ -4,35 +4,25 @@ import PropTypes from "prop-types";
 import "./styles/style.scss";
 
 export const Carousel = React.memo(
-  ({
-    slides,
-    autoplay,
-    interval,
-    arrows,
-    onSlideChange,
-    defaultSlide = -1,
-    currentSlide = defaultProps,
-  }) => {
-    const [slideTotal, setSlideTotal] = useState(0);
+  ({ slides, autoplay, interval, arrows, onSlideChange, currentSlide }) => {
     const [localSlides, setLocalSlides] = useState([]);
-    const [height, setHeight] = useState("0px");
     const nextRef = useRef();
 
-    const slideRight = () => {
+    const slideRight = useCallback(() => {
       let nextIndex = currentSlide - 1;
 
       if (nextIndex < 0) nextIndex = localSlides.length - 1;
 
       onSlideChange(nextIndex);
-    };
+    }, [currentSlide, localSlides.length]);
 
-    const slideLeft = () => {
+    const slideLeft = useCallback(() => {
       let nextIndex = currentSlide + 1;
 
       if (nextIndex > localSlides.length - 1) nextIndex = 0;
 
       onSlideChange(nextIndex);
-    };
+    }, [currentSlide, localSlides.length]);
 
     useEffect(() => {
       const locSlides = [];
@@ -56,8 +46,6 @@ export const Carousel = React.memo(
       }
 
       const lastSlideIndex = locSlides.length - 1;
-
-      console.log(currentSlide);
 
       const processedSlides = locSlides.map((slide, i) => {
         let slideClass = "slider-single";
@@ -87,7 +75,6 @@ export const Carousel = React.memo(
       });
 
       setLocalSlides(processedSlides);
-      setSlideTotal(processedSlides.length - 1);
     }, [slides, currentSlide]);
 
     const sliderClass = (direction) => {
@@ -101,6 +88,16 @@ export const Carousel = React.memo(
       return sliderClass;
     };
 
+    useEffect(() => {
+      if (autoplay) {
+        const intervalId = setInterval(() => {
+          slideLeft();
+        }, interval);
+
+        return () => clearInterval(intervalId);
+      }
+    }, [autoplay, interval]);
+
     const handlers = useSwipeable({
       onSwipedLeft: () => slideRight(),
       onSwipedRight: () => slideLeft(),
@@ -109,7 +106,7 @@ export const Carousel = React.memo(
     });
 
     return (
-      <div className="react-3d-carousel" style={{ height }} {...handlers}>
+      <div className="react-3d-carousel" {...handlers}>
         {localSlides && localSlides.length > 0 && (
           <div className="slider-container">
             <div className="slider-content">

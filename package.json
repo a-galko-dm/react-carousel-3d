@@ -1,6 +1,6 @@
 {
   "name": "3d-react-carousel",
-  "version": "7.0.1",
+  "version": "7.0.2",
   "description": "3D carousel in react",
   "main": "dist/index.js",
   "peerDependencies": {
@@ -21,7 +21,7 @@
     "storybook": "storybook dev -p 6006",
     "build-storybook": "storybook build"
   },
-  "author": "Suhail C <mr.suhailsulu@gmail.com>",
+  "author": "Andrey G <andrey@decormatters.com>",
   "repository": {
     "type": "git",
     "url": "git+https://github.com/suhailsulu/react-carousel-3d.git"
